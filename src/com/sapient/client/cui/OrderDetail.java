@@ -2,20 +2,20 @@ package com.sapient.client.cui;
 
 public class OrderDetail {
 
-Object Quantity;
-Object Taxstatus;
-Order order
+int Quantity;
+boolean Taxstatus;
+Order order;
 Item Item;
-public Object getQuantity() {
+public int getQuantity() {
 	return Quantity;
 }
-public void setQuantity(Object quantity) {
+public void setQuantity(int quantity) {
 	this.Quantity = quantity;
 }
-public Object getTaxstatus() {
+public boolean getTaxstatus() {
 	return Taxstatus;
 }
-public void setTaxstatus(Object taxstatus) {
+public void setTaxstatus(boolean taxstatus) {
 	this.Taxstatus = taxstatus;
 }
 public Order getOrder() {
