@@ -15,7 +15,7 @@ public void setDate(Date date) {
 public Object getStatus() {
 	return status;
 }
-public void setStatus(Object status) {
+public void setStatus(boolean status) {
 	this.status = status;
 }
 public NewCustomer getCustomer() {
@@ -38,16 +38,17 @@ public void setOrderdetail(OrderDetail orderdetail) {
 }
 public int calcTax()
 {
+	int tax=0;
 	return tax;
 }
 public int calcTotal()
 {
-	int total;
+	int total=0;
 	return total;
 }
 public int calcWeight()
 {
-	int totalWeight;
+	int totalWeight=0;
 	return totalWeight;
 }
 }

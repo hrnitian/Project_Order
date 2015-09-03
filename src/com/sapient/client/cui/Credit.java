@@ -9,23 +9,25 @@ public class Credit extends Payment implements Authorization{
 	public Object getNumber() {
 		return number;
 	}
-	public void setNumber(Object number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 	public Object getType() {
 		return type;
 	}
-	public void setType(Object type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public Object getExpDate() {
 		return expDate;
 	}
-	public void setExpDate(Object expDate) {
+	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
 	}
 	
 	public boolean authorized() {
+		boolean authorize=true;
+		return authorize;
 		
 	}
 	
