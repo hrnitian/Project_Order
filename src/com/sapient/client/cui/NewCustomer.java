@@ -5,6 +5,7 @@ public class NewCustomer {
 	String address;
 	Order order;
 	public String getName() {
+		
 		return name;
 	}
 	public void setName(String name) {

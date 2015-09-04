@@ -2,7 +2,7 @@ package com.sapient.client.cui;
 import java.util.*;
 public class Order {
 Date Date;
-boolean status;
+String status;
 NewCustomer customer;
 Payment payment;
 OrderDetail orderdetail;
@@ -12,10 +12,10 @@ public Date getDate() {
 public void setDate(Date date) {
 	Date = date;
 }
-public Object getStatus() {
+public String getStatus() {
 	return status;
 }
-public void setStatus(boolean status) {
+public void setStatus(String status) {
 	this.status = status;
 }
 public NewCustomer getCustomer() {

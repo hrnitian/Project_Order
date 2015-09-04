@@ -1,22 +1,25 @@
 package com.sapient.client.cui;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Credit extends Payment implements Authorization{
-	int number;
-	String type;
+	long  creditCardNumber;
+	String cardType;
+
 	Date expDate;
+	String[] type={"Maestro" ,"Visa","Master card"};
 	public Object getNumber() {
-		return number;
+		return creditCardNumber;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNumber(long  creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 	public Object getType() {
-		return type;
+		return cardType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String cardType) {
+		this.cardType = cardType;
 	}
 	public Object getExpDate() {
 		return expDate;
@@ -27,7 +30,24 @@ public class Credit extends Payment implements Authorization{
 	
 	public boolean authorized() {
 		boolean authorize=true;
-		return authorize;
+		Long number=this.creditCardNumber;
+		String numberToString=number.toString();
+		if(numberToString.length()==8)
+		{
+			for(String sample:type)
+			{
+				if(cardType.equals(sample))
+				{   SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
+					Calendar cal=Calendar.getInstance(); 
+					if((cal.after(expDate)))
+					{
+						return true;
+					}
+				}
+			}
+				
+		}
+		return false;
 		
 	}
 	
