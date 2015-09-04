@@ -1,55 +1,64 @@
 package com.sapient.client.cui;
-
-import java.util.Calendar;
 import java.util.Date;
-
-public class Credit extends Payment implements Authorization{
-	long  creditCardNumber;
-	String cardType;
-
-	Date expDate;
-	String[] type={"Maestro" ,"Visa","Master card"};
-	public Object getNumber() {
-		return creditCardNumber;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+public class Credit extends Payment implements Authorization {
+	private long number;
+	private String type;
+	private Date expDate;
+	
+	private final Map<String,Long> cardDetails = new HashMap<String,Long>();
+	public final void validCardDetails(){
+		cardDetails.put("MasterCard",new Long(5196));
+		cardDetails.put("Visa",new Long(8523));
+	    
 	}
-	public void setNumber(long  creditCardNumber) {
-		this.creditCardNumber = creditCardNumber;
+	public long getNumber() {
+		return number;
 	}
-	public Object getType() {
-		return cardType;
+	public void setNumber(long number) {
+		this.number = number;
 	}
-	public void setType(String cardType) {
-		this.cardType = cardType;
+	public String getType() {
+		return type;
 	}
-	public Object getExpDate() {
+	public void setType(String type) {
+		this.type = type;
+	}
+	public Date getExpDate() {
 		return expDate;
 	}
 	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
 	}
 	
-	public boolean authorized() {
-		boolean authorize=true;
-		Long number=this.creditCardNumber;
-		String numberToString=number.toString();
-		if(numberToString.length()==8)
-		{
-			for(String sample:type)
-			{
-				if(cardType.equals(sample))
-				{   SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
-					Calendar cal=Calendar.getInstance(); 
-					if((cal.after(expDate)))
-					{
-						return true;
-					}
+	@Override
+	public String authorized() {
+		// TODO Auto-generated method stub
+		
+		Date currentDate = new Date();
+		Date expdate = this.getExpDate();
+		if (currentDate.compareTo(expDate) < 0)
+				{
+			    return "card has expired";
 				}
-			}
-				
+		Iterator mapIteration;
+		mapIteration = cardDetails.entrySet().iterator();
+		long value = 0L;
+		String key="";
+		value=this.getNumber();
+		key=this.getType();
+		while(mapIteration.hasNext())
+		{
+		Map.Entry mapEntry = (Map.Entry) mapIteration.next();
+		if(value == (Long)mapEntry.getValue() && key == mapEntry.getKey() ){
+		 return "authorised card";
 		}
-		return false;
 		
 	}
+		return "card cannot be authorised";
+		
 	
-
+}
 }
