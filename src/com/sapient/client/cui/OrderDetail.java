@@ -5,13 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+import com.sapient.client.test.ItemTest;
+
 public class OrderDetail {
 
 int Quantity;
 boolean Taxstatus;
 Order order;
 Item Item;
-Item obj;
+Item obj=new Item();
+ItemTest object = new ItemTest();
 ArrayList<Integer> list=new ArrayList<Integer>();
 
 public void addItems()
@@ -58,13 +61,13 @@ public double calcSubTotal()
 		int k=listIterator.next();
 		if(k==Item.description)
 		{
-			obj=arrayItem[index];
+			obj=object.arrayItem[index];
 			return  (Quantity*obj.getPriceForQuantity());
 		}
 		index++;
 		
 	}
-	
+	return 0.0;
 }
 public double calcWeight()
 {

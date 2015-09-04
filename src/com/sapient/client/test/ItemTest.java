@@ -17,7 +17,7 @@ public class ItemTest {
 	Item pen = new Item();
 	Item pencil = new Item();
 	Item copy = new Item();
-	Item[] arrayItem = new Item[5];
+	public Item[] arrayItem = new Item[5];
 	
 
 	@Before
