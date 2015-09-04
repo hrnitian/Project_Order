@@ -21,7 +21,6 @@ public class CheckTest {
 	public void setUp() throws Exception {
 		check = new Check();
 		bankDetails.put("HDFCBank", "HDFC000000");
-		bankDetails.put("ICICI Bank", "ICICI100000");
 	}
 
 	@After
@@ -61,17 +60,15 @@ public class CheckTest {
 		      String bankid=entry.getValue();
 		      System.out.println(name+" "+bankid);
 		      if((name==check.getName())&&(bankid==check.getBankID())){
-		    	  actual=check.authorized("Check not Authorized");
+		    	  actual=check.authorized("Check Authorized");
 		      }
 		      else{
-		    	  actual=check.authorized("Check Authorized");
+		    	  actual=check.authorized("Check not Authorized");
 		      }
 				
 			}
 		String expected = "Check Authorized";
 		
-		
-		//actual = check.authorized();
 		assertEquals(expected, actual);
 	}
 }

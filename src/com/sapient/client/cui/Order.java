@@ -5,7 +5,12 @@ Date Date;
 String status;
 NewCustomer customer;
 Payment payment;
-OrderDetail orderdetail;
+int totalWeight;
+double tax;
+double total;
+Item item;
+OrderDetail orderdetail ;
+public ArrayList<Integer> list=new ArrayList<Integer>();
 public Date getDate() {
 	return Date;
 }
@@ -36,19 +41,23 @@ public OrderDetail getOrderdetail() {
 public void setOrderdetail(OrderDetail orderdetail) {
 	this.orderdetail = orderdetail;
 }
-public int calcTax()
+public double calcTax()
 {
-	int tax=0;
-	return tax;
+	tax=12.5;
+	double tax1 = payment.getAmount();
+	tax = ((tax * tax1 )/100) ;   
+    return tax;
 }
-public int calcTotal()
+public double calcTotal()
 {
-	int total=0;
+	orderdetail = new OrderDetail();
+	total = orderdetail.calcSubTotal() + calcTax();
 	return total;
 }
 public int calcWeight()
 {
-	int totalWeight=0;
+	item = new Item();
+	totalWeight = (int) (item.getWeight() * orderdetail.getQuantity());
 	return totalWeight;
 }
 }
