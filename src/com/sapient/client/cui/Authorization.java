@@ -1,5 +1,5 @@
 package com.sapient.client.cui;
 
 public interface Authorization {
-public String authorized();
+public String authorized(String str);
 }

@@ -2,22 +2,20 @@ package com.sapient.client.cui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
 
 import com.sapient.client.test.ItemTest;
 
 public class OrderDetail {
 
-int Quantity;
-boolean Taxstatus;
+int quantity;
+boolean taxStatus;
 Order order;
-Item Item;
+Item item = new Item();
 Item obj=new Item();
 ItemTest object = new ItemTest();
-ArrayList<Integer> list=new ArrayList<Integer>();
+public ArrayList<Integer> list=new ArrayList<Integer>();
 
-public void addItems()
+/*public void addItems()
 {
 	list.add(100);
 	list.add(200);
@@ -25,18 +23,18 @@ public void addItems()
 	list.add(400);
 	list.add(500);
 	
-}
+}*/
 public int getQuantity() {
-	return Quantity;
+	return quantity;
 }
 public void setQuantity(int quantity) {
-	this.Quantity = quantity;
+	this.quantity = quantity;
 }
 public boolean getTaxstatus() {
-	return Taxstatus;
+	return taxStatus;
 }
 public void setTaxstatus(boolean taxstatus) {
-	this.Taxstatus = taxstatus;
+	this.taxStatus = taxstatus;
 }
 public Order getOrder() {
 	return order;
@@ -45,24 +43,26 @@ public void setOrder(Order order) {
 	this.order = order;
 }
 public Item getItem() {
-	
-	return Item;
+	return item;
 }
 public void setItem(Item item) {
-	this.Item = item;
+	this.item = item;
+	
 }
 
 public double calcSubTotal()
 {
+	System.out.println(getItem().getDescription());
 	Iterator<Integer> listIterator=list.iterator();
 	while(listIterator.hasNext())
 	{
 		int index=0;
 		int k=listIterator.next();
-		if(k==Item.description)
+		if(k==getItem().getDescription())
 		{
 			obj=object.arrayItem[index];
-			return  (Quantity*obj.getPriceForQuantity());
+			//System.out.println(obj.getPriceForQuantity());
+			return  quantity*obj.getPriceForQuantity();
 		}
 		index++;
 		
@@ -71,7 +71,7 @@ public double calcSubTotal()
 }
 public double calcWeight()
 {
-	return Quantity*obj.getShippingWeight();
+	return quantity*obj.getShippingWeight();
 }
 
 }

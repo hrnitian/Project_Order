@@ -18,10 +18,13 @@ public class ItemTest {
 	Item pencil = new Item();
 	Item copy = new Item();
 	public Item[] arrayItem = new Item[5];
-	
-
-	@Before
-	public void setUp() throws Exception {
+	public ItemTest()
+	{
+		arrayItem[0]=mouse;
+		arrayItem[1]=keyboard;
+		arrayItem[2]=pen;
+		arrayItem[3]=pencil;
+		arrayItem[4]=copy;
 		mouse.setShippingWeight(100);
 		mouse.setDescription(1);
 		mouse.setPriceForQuantity(1000);
@@ -37,12 +40,12 @@ public class ItemTest {
 		copy.setShippingWeight(500);
 		copy.setDescription(5);
 		copy.setPriceForQuantity(50);
+	}
+	
+
+	@Before
+	public void setUp() throws Exception {
 		
-		arrayItem[0]=mouse;
-		arrayItem[1]=keyboard;
-		arrayItem[2]=pen;
-		arrayItem[3]=pencil;
-		arrayItem[4]=copy;
 	}
 
 	@After

@@ -34,31 +34,9 @@ public class Credit extends Payment implements Authorization {
 	}
 	
 	@Override
-	public String authorized() {
+	public String authorized( String message) {
 		// TODO Auto-generated method stub
-		
-		Date currentDate = new Date();
-		Date expdate = this.getExpDate();
-		if (currentDate.compareTo(expDate) < 0)
-				{
-			    return "card has expired";
-				}
-		Iterator mapIteration;
-		mapIteration = cardDetails.entrySet().iterator();
-		long value = 0L;
-		String key="";
-		value=this.getNumber();
-		key=this.getType();
-		while(mapIteration.hasNext())
-		{
-		Map.Entry mapEntry = (Map.Entry) mapIteration.next();
-		if(value == (Long)mapEntry.getValue() && key == mapEntry.getKey() ){
-		 return "authorised card";
-		}
-		
+		return  message;
+
 	}
-		return "card cannot be authorised";
-		
-	
-}
 }
