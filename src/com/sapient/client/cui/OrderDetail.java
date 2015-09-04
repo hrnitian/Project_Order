@@ -11,6 +11,7 @@ int Quantity;
 boolean Taxstatus;
 Order order;
 Item Item;
+Item obj;
 ArrayList<Integer> list=new ArrayList<Integer>();
 
 public void addItems()
@@ -48,19 +49,26 @@ public void setItem(Item item) {
 	this.Item = item;
 }
 
-public void calcSubTotal()
+public double calcSubTotal()
 {
 	Iterator<Integer> listIterator=list.iterator();
 	while(listIterator.hasNext())
 	{
-		listIterator.next();
+		int index=0;
+		int k=listIterator.next();
+		if(k==Item.description)
+		{
+			obj=arrayItem[index];
+			return  (Quantity*obj.getPriceForQuantity());
+		}
+		index++;
 		
 	}
 	
 }
-public void calcWeight()
+public double calcWeight()
 {
-	
+	return Quantity*obj.getShippingWeight();
 }
 
 }
