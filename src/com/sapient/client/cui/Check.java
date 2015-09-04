@@ -15,9 +15,9 @@ public int getBankID() {
 public void setBankID(int bankID) {
 	this.bankID = bankID;
 }
-public boolean authorized()
+public String authorized()
 {
-	boolean authorize=true;
+	String authorize=" ";
 	return authorize;
 }
 
