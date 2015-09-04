@@ -3,8 +3,9 @@ package com.sapient.client.cui;
 public class Item {
 
 	int shippingWeight;
-	String description;
-	OrderDetail orderDeal;
+	int description;
+	double priceForQuantity;
+	OrderDetail orderDetail;
 	
 	
 	public int getShippingWeight() {
@@ -15,29 +16,34 @@ public class Item {
 		this.shippingWeight = shippingWeight;
 	}
 
-	public String getDescription() {
+	public int  getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(int description) {
 		this.description = description;
 	}
 
-	public OrderDetail getOrderDeal() {
-		return orderDeal;
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
 	}
 
-	public void setOrderDeal(OrderDetail orderDeal) {
-		this.orderDeal = orderDeal;
+	public void setOrderDeal(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
 	}
 
-	public void getPriceForQuantity()
+	public double getPriceForQuantity()
 	{
-		
+		return priceForQuantity;
+	}
+	public void setPriceForQuantity(double price)
+	{
+		this.priceForQuantity=price;
 	}
 	
-	public void getWeight()
+	public double getWeight()
 	{
+		return shippingWeight*0.8;
 	}
 	
 }
